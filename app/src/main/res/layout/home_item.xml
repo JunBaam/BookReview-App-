@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/homeConst"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+
+    android:background="#FFFFFF">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        android:orientation="horizontal"
+
+
+        android:background="#E6DEDE"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_bookcover"
+            android:layout_width="140dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="100dp"
+            android:background="#424242"
+            android:scaleType="centerCrop"
+
+
+
+            />
+
+
+    </LinearLayout>
+
+    <!-- 레이팅바 수정못하게 isIndicator-->
+    <RatingBar
+        android:id="@+id/rb_home"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:isIndicator="true"
+        android:max="5"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="0.5"
+        app:layout_constraintBottom_toTopOf="@+id/tv_homeContent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
+        app:layout_constraintStart_toEndOf="@+id/tv_homeUserId"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tv_rating_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+     android:layout_marginStart="2dp"
+        android:layout_marginBottom="32dp"
+        android:text="0.0"
+        android:textColor="#000000"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_homeContent"
+
+        app:layout_constraintStart_toEndOf="@+id/rb_home"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <Button
+        android:id="@+id/home_modify"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:visibility="gone"
+        android:layout_marginStart="44dp"
+
+        android:layout_marginTop="16dp"
+        android:background="#FFFFFF"
+        android:text="수정"
+        app:layout_constraintStart_toEndOf="@+id/tv_rating_count"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType" />
+
+    <Button
+        android:id="@+id/home_remove"
+        android:visibility="gone"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        android:background="#FFFFFF"
+        android:text="삭제"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/home_modify"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType" />
+
+    <LinearLayout
+        android:id="@+id/layoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_marginTop="2sp"
+        android:background="#FFA184"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+
+
+        <TextView
+            android:id="@+id/tv_home_title"
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:text="책이름"
+            android:textColor="#FFFFFF"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+        <ImageView
+            android:id="@+id/iv_home_love"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:alpha="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:src="@drawable/s3" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LayoutType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:background="#FFA184"
+        android:weightSum="2"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutName">
+
+        <TextView
+            android:id="@+id/tv_home_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textStyle="italic"
+            android:text="저자"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/tv_homeProfile"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_person_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType" />
+
+    <TextView
+        android:id="@+id/tv_homeUserId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:text="회원아이디"
+        app:layout_constraintStart_toEndOf="@+id/tv_homeProfile"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutType" />
+
+    <TextView
+        android:id="@+id/tv_homeContent"
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/black"
+        android:text="책후기내용"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_homeProfile" />
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_homeContent">
+
+        <ImageView
+            android:id="@+id/iv_homeLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:alpha="1"
+            android:src="@drawable/ngood" />
+
+
+        <TextView
+            android:id="@+id/tv_likeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text=""
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_homeReply"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/reply" />
+
+
+
+        <TextView
+            android:id="@+id/tv_replyCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:text="" />
+
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_reply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:hint="댓글을 써주세요."
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

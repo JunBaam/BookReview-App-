@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:itemIconTint="#000000"
+        app:itemTextColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_frame"
+        app:layout_constraintVertical_bias="1.0"
+        app:menu="@menu/bottom_menu" />
+
+    <FrameLayout
+        android:id="@+id/main_frame"
+        android:layout_width="match_parent"
+        android:layout_height="583dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+    -->
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.576"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account_box_black_24dp" />
+
+    <EditText
+        android:id="@+id/img_title"
+        android:layout_width="0dp"
+        android:layout_height="11dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/uploadBn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="이미지 업로드"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_title" />
+
+
+    <Button
+        android:id="@+id/chooseBn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:enabled="false"
+        android:text="이미지선택"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.284"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadBn" />
+
+    <RatingBar
+        android:id="@+id/rb_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="false"
+        android:max="5"
+        android:numStars="5"
+        android:rating="0"
+        android:stepSize="0.5"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/et_test"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:hint="레이팅바연습연습 "
+        app:layout_constraintBottom_toTopOf="@+id/rb_test"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseBn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

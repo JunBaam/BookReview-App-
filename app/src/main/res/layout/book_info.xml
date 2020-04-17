@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="7dp"
+    android:layout_marginEnd="7dp"
+    android:background="#FFFFFF"
+    tools:context=".BookInfoActivity">
+
+
+    <Button
+        android:id="@+id/btn_info_review"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FE7B05"
+        android:gravity="center"
+        android:text="리뷰작성하기"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+
+        android:gravity="left"
+        android:text="책제목"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_info_poster" />
+
+    <ImageView
+        android:id="@+id/iv_info_poster"
+        android:layout_width="160dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:background="#000000"
+        android:contentDescription="NoImage"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+    <!--책정보 리니어-->
+
+    <!--책정보 리니어-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_info_title"
+        app:layout_constraintVertical_bias="0.073">
+
+        <!-- 제목 텍스트뷰 -->
+        <TextView
+            android:id="@+id/tv_info_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저자"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="275dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+            android:layout_marginRight="3sp"
+            android:text="|"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="275dp" />
+        <!-- 제목 텍스트뷰 -->
+
+        <!-- 출판사 텍스트뷰 -->
+        <TextView
+            android:id="@+id/tv_info_publisher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출판사"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="275dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3sp"
+            android:layout_marginRight="3sp"
+            android:text="|"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="275dp" />
+        <!-- 출판사 텍스트뷰 -->
+
+
+        <TextView
+            android:id="@+id/tv_info_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="출판일"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="275dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="책정보"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="책소개"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/tv_info_contents"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="내용"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

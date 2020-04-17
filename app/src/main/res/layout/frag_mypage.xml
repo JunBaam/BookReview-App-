@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    tools:context=".MypageActivity">
+
+
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_edge"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutName">
+
+
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:textSize="20sp"-->
+        <!--            android:textColor="#000"-->
+        <!--            android:id="@+id/tv_email"-->
+        <!--            android:text="이메일:"/>-->
+
+
+
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/btn_gallery"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                app:fabSize="mini"-->
+<!--                android:background="#000000"-->
+<!--                app:srcCompat="@drawable/ic_picture"-->
+<!--                tools:ignore="VectorDrawableCompat" />-->
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="30dp"
+            android:id="@+id/iv_mypage_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:src="@drawable/user" />
+
+        <TextView
+            android:id="@+id/tv_mypageId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="아이디:"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/btn_profile_modify"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/round_edgeorange"
+            android:text="프로필 수정 "
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/tv_myBoard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="30dp"
+            android:text="내가올린 게시물 수"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_mypage_board"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/round_edge"
+        android:gravity="left"
+        android:text="  나만의 서재"
+        android:fontFamily="sans-serif-light"
+        android:layout_marginTop="1dp"
+
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_bookMark" />
+
+    <Button
+        android:id="@+id/btn_bookMark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/round_edge"
+        android:gravity="left"
+        android:fontFamily="sans-serif-light"
+        android:text="  북마크 목록"
+
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/btn_mypageReply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_edge"
+        android:gravity="left"
+        android:text="  내가 좋아요한 댓글"
+        android:fontFamily="sans-serif-light"
+        android:textSize="20dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_mypage_board" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

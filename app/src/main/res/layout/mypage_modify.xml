@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    >
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="프로필 수정"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/round_edge"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/iv_modify_image"
+            android:layout_width="148dp"
+            android:layout_height="148dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:src="@drawable/user" />
+
+
+
+
+        <EditText
+            android:id="@+id/et_modify_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:textSize="20sp"-->
+        <!--            android:textColor="#000"-->
+        <!--            android:id="@+id/tv_email"-->
+        <!--            android:text="이메일:"/>-->
+
+
+        <!--내가 작성한 게시물수 -->
+        <Button
+            android:id="@+id/btn_profile_modify"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/round_edgeorange"
+            android:text="수정 완료!"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

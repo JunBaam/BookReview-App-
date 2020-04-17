@@ -76,6 +76,16 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
+    <TextView
+        android:id="@+id/tv_isbn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="isbn"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_rating_count"
+        app:layout_constraintTop_toBottomOf="@+id/layoutName" />
+
     <Button
         android:id="@+id/home_modify"
         android:layout_width="30dp"
@@ -163,10 +173,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textStyle="italic"
             android:text="저자"
             android:textColor="#FFFFFF"
-            android:textSize="15sp" />
+            android:textSize="15sp"
+            android:textStyle="italic" />
 
 
     </LinearLayout>

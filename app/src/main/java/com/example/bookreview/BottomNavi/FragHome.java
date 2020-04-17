@@ -96,7 +96,11 @@ public class FragHome extends Fragment {
             public void onReplyClick(View view, int position) {
                 Log.i(TAG, "onReplyClick: ");
           Intent intent =new Intent(getContext(), ReplyActivity.class);
-          startActivity(intent);
+          String isbn= reviewItems.get(position).getIsbn();  //책고유번호
+
+                intent.putExtra("isbn",isbn);
+
+                startActivity(intent);
 
             }
             

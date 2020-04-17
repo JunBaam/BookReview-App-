@@ -39,7 +39,7 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
 
     private SharedPreferences sharedPreferences ;
 
-    String review_user,shared_user;
+    String review_user,shared_user ,isbn;
 
    Button btn_remove,btn_modify;
 
@@ -64,6 +64,8 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         holder.tv_content.setText(reviewItemList.get(position).getContent()); //후기내용
         holder.tv_star.setText(reviewItemList.get(position).getStar());//후기점수
         holder.tv_user.setText(reviewItemList.get(position).getUser()+"님의 점수:"); //사용자
+
+        isbn =reviewItemList.get(position).getIsbn();  //isbn 책고유번호.
 
 
         //현재 로그인된 아이디 @@@@@@@@@@@ context 정리해둘것
@@ -135,7 +137,7 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         private RecyclerViewClickListener mListener;
         private ImageView iv_image,iv_home_love ,iv_home_userImage ,iv_reply;//책커버 , 즐겨찾기
         private TextView tv_title,tv_author,tv_user,
-                tv_content,tv_likeCount,tv_replyCount,tv_star ;
+                tv_content,tv_likeCount,tv_replyCount,tv_star ,tv_isbn;
 
         private RatingBar rb_star;
 
@@ -144,19 +146,22 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         public HomeViewHolder(View itemView,RecyclerViewClickListener listener) {
             super(itemView);
 
-            iv_home_love=itemView.findViewById(R.id.iv_home_love);
-            iv_image=itemView.findViewById(R.id.iv_bookcover);
-            iv_reply=itemView.findViewById(R.id.iv_homeReply); //댓글이미지뷰
 
-            tv_title=itemView.findViewById(R.id.tv_home_title);
-            tv_author=itemView.findViewById(R.id.tv_home_author);
-            tv_user=itemView.findViewById(R.id.tv_homeUserId);
-            tv_content=itemView.findViewById(R.id.tv_homeContent);
-            tv_likeCount=itemView.findViewById(R.id.tv_likeCount);
-            tv_replyCount=itemView.findViewById(R.id.tv_replyCount);
-            tv_star=itemView.findViewById(R.id.tv_rating_count);
-            rb_star=itemView.findViewById(R.id.rb_home);
-            iv_home_userImage=itemView.findViewById(R.id.tv_homeProfile);
+            iv_home_love=itemView.findViewById(R.id.iv_home_love);  //북마크
+            iv_image=itemView.findViewById(R.id.iv_bookcover);//책커버 이미지
+            iv_reply=itemView.findViewById(R.id.iv_homeReply); //댓글이미지뷰
+            iv_home_userImage=itemView.findViewById(R.id.tv_homeProfile);//게시글 사용자 프로필
+
+            tv_title=itemView.findViewById(R.id.tv_home_title);   //제목
+            tv_author=itemView.findViewById(R.id.tv_home_author); // 저자
+            tv_user=itemView.findViewById(R.id.tv_homeUserId);     //게시글 사용자
+            tv_content=itemView.findViewById(R.id.tv_homeContent); // 게시글 내용
+            tv_likeCount=itemView.findViewById(R.id.tv_likeCount);  //좋아요수
+            tv_replyCount=itemView.findViewById(R.id.tv_replyCount);  //댓글수
+            tv_isbn=itemView.findViewById(R.id.tv_isbn);             //isbn
+            tv_star=itemView.findViewById(R.id.tv_rating_count); //별점 점수표기
+            rb_star=itemView.findViewById(R.id.rb_home);         //별점
+
 
             //수정 삭제 버튼
             btn_modify=itemView.findViewById(R.id.home_modify);

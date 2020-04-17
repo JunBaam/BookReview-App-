@@ -19,7 +19,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.bookreview.Adapter.HomeAdpater;
 import com.example.bookreview.Adapter.ReplyAdapter;
+import com.example.bookreview.UserInterface.Upload;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,6 +46,8 @@ public class ReplyActivity extends AppCompatActivity {
 
     PreferenceHelper preferenceHelper;
     SharedPreferences login_pref;
+    String REGIURL = "http://15.165.60.40/user/";
+    ReplyApi replyApi;
     private final String BASEURL = "http://15.165.60.40/user/";
 
     private static final String TAG = "REPLY";
@@ -53,7 +57,7 @@ public class ReplyActivity extends AppCompatActivity {
     Button btn_reply;
 
 
-
+Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,12 +69,11 @@ public class ReplyActivity extends AppCompatActivity {
         //리사이클러뷰 설정
         recyclerView = findViewById(R.id.rv_reply);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(ReplyActivity.this);
         recyclerView.setLayoutManager(layoutManager);
-
         // 구분선 추가
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(getApplicationContext(),
-                new LinearLayoutManager(getApplicationContext()).getOrientation());
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(ReplyActivity.this,
+                new LinearLayoutManager(ReplyActivity.this).getOrientation());
         recyclerView.addItemDecoration(dividerItemDecoration);
 
          tv_user =findViewById(R.id.tv_replyUser);
@@ -83,15 +86,9 @@ public class ReplyActivity extends AppCompatActivity {
          btn_reply.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
-                 Intent intent = new Intent(ReplyActivity.this,MainActivity.class);
-
-              //   getUserProfile(); //유저 이미지를 가져옴
 
                  InsertReply(); //서버에 댓글을 등록
-
-
-                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
+                 getReply();   //리뷰를 가져옴
 
              }
          });
@@ -102,6 +99,8 @@ public class ReplyActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         getUserProfile();
+
+        getReply();
     }
 
     //댓글등록
@@ -109,13 +108,14 @@ public class ReplyActivity extends AppCompatActivity {
 
   ReplyApi replyApi = ApiClient.getApiClient().create(ReplyApi.class);
 
+       //edittext에 적은 댓글을 가져옴
        et_reply=findViewById(R.id.et_reply_rb);
        String reply = String.valueOf(et_reply.getText());
 
+       //쉐어드에 사용자,프로필이미지 저장
        login_pref = getSharedPreferences("logininfo", Context.MODE_PRIVATE);
        String name = login_pref.getString("id","");
        String image = login_pref.getString("Image","");
-
 
        //현재시간 가져오기 년 월 일 시간 분
        long now = System.currentTimeMillis();
@@ -123,9 +123,15 @@ public class ReplyActivity extends AppCompatActivity {
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
        String getTime = sdf.format(date);
 
+       //isbn
+       Intent intent=getIntent();
+       String isbn= intent.getStringExtra("isbn");
 
+       //리사이클러뷰에 바뀐걸 adapter에 알림
+       replyAdapter.notifyDataSetChanged();
 
-      Call<UserItem> call = replyApi.InserReply(image ,name, reply,getTime);
+       //서버로 POST전송
+      Call<UserItem> call = replyApi.InserReply(image ,name, reply,getTime,isbn);
 
   call.enqueue(new Callback<UserItem>() {
     @Override
@@ -145,11 +151,73 @@ public class ReplyActivity extends AppCompatActivity {
 
    }
 
+//    public void getReply2() {
+//
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(REGIURL)
+//                .addConverterFactory(ScalarsConverterFactory.create())
+//                .build();
+//
+//        ReplyApi replyApi = retrofit.create(ReplyApi.class);
+//
+//        Intent intent=getIntent();
+//        String isbn= intent.getStringExtra("isbn");
+//
+//        Log.i(TAG, "Reply2: " + isbn);
+//        Call<String> call = replyApi.GetReply(isbn);
+//
+//        call.enqueue(new Callback<String>() {
+//            @Override
+//            public void onResponse(Call<String> call, Response<String> response) {
+//                Log.i("Reply", response.body().toString());
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<String> call, Throwable t) {
+//                Log.i("Reply", "실패");
+//            }
+//        });
+//
+//
+//    }
+
+
+    public void getReply() {
+
+        ReplyApi replyApi = ApiClient.getApiClient().create(ReplyApi.class);
+        Intent intent=getIntent();
+        String isbn= intent.getStringExtra("isbn");
+
+        Call<List<UserItem>> call = replyApi.GetReply(isbn);
+
+        call.enqueue(new Callback<List<UserItem>>() {
+            @Override
+            public void onResponse(Call<List<UserItem>> call, Response<List<UserItem>> response) {
+
+               userItemList=response.body();
+                Log.i(TAG, String.valueOf(userItemList));
+
+                //Activity  == ReplyActivity.this 기억할것
+                replyAdapter = new ReplyAdapter(ReplyActivity.this, userItemList);
+                recyclerView.setAdapter(replyAdapter);
+                replyAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<List<UserItem>> call, Throwable t) {
+                Log.i(TAG, "onFailure: ");
+            }
+        });
+
+    }//getReply
 
 
 
 
-  //유저 이미지
+
+  //유저 이미지를 가져옴
     private void getUserProfile() {
 
         login_pref = getSharedPreferences("logininfo", Context.MODE_PRIVATE);

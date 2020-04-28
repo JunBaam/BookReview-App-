@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -33,7 +35,6 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private BottomNavigationView bottomNavigationView; //바텀네비
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -42,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
     private  SearchFragment searchFragment;
     private FragChat fragChat;
     private FragMypage fragMypage;
+    ImageView iv_ocr;
+    TextView tv_user;
 
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,23 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+
+        sharedPreferences = getSharedPreferences("logininfo", Context.MODE_PRIVATE);
+        String user = sharedPreferences.getString("id","");
+        tv_user=findViewById(R.id.tv_main_user);
+        tv_user.setText(user+"님 안녕하세요 :)");
+
+
+
+        iv_ocr=findViewById(R.id.iv_ocr);
+        iv_ocr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            Intent intent =new Intent(getApplicationContext() ,OcrActivity.class);
+            startActivity(intent);
+
+            }
+        });
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -69,10 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_mypage:
                         setFrag(3);
                         break;
-
                 }
-
-
                 return true;
             }
         });
@@ -82,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
         fragMypage =new FragMypage();
 
         setFrag(0); // 첫번째 플래그먼트 화면을 무엇으로 지정할지 선택.
-
-
 
     } //oncreate
 

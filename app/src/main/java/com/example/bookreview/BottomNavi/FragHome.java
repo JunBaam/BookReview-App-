@@ -103,7 +103,9 @@ public class FragHome extends Fragment {
                 startActivity(intent);
 
             }
-            
+
+
+
             //삭제버튼클릭
             @Override
             public void onRemoveClick(View view, final int position) {
@@ -165,7 +167,27 @@ public class FragHome extends Fragment {
 
     }
 
-    
+    //좋아요 이미지 클릭
+            @Override
+            public void onLikeClick(View view, int position) {
+                final String author = reviewItems.get(position).getAuthor();
+               final Boolean like =reviewItems.get(position).getLike();
+
+                Log.i(TAG, "likeclick" + author +"@@@"+like);
+                //final Boolean love =reviewItems.get(position).getLove();
+                final ImageView iv_like = view.findViewById(R.id.iv_homeLike);
+
+//                if(like){
+//                    iv_like.setImageResource(R.drawable.ngood);
+//                    reviewItems.get(position).setLike(false);
+//                    updateLike(false,author);
+//                    homeAdpater.notifyDataSetChanged();
+//                }
+//                iv_like.setImageResource(R.drawable.good);
+//                reviewItems.get(position).setLike(true);
+//                updateLike(true,author);
+//                homeAdpater.notifyDataSetChanged();
+            }
 
     //북마크 이미지 클릭
     @Override
@@ -223,7 +245,7 @@ public class FragHome extends Fragment {
     });
     }//getReview
 
-     //게시물 업데이트
+     //북마크 업데이트
     public void updateLove(final Boolean love, String author){
 
         Call<ReviewItem> call =  reviewInterface.update(author, love);
@@ -247,6 +269,38 @@ public class FragHome extends Fragment {
             }
         });
     }
+
+
+    //좋아요 업데이트
+    public void updateLike(final Boolean like, String author){
+
+        Call<ReviewItem> call =  reviewInterface.update_like(author, like);
+        call.enqueue(new Callback<ReviewItem>() {
+            @Override
+            public void onResponse(Call<ReviewItem> call, Response<ReviewItem> response) {
+
+                String value = response.body().getValue();
+                String message = response.body().getMassage();
+
+                Log.i(TAG, "like: 되긴됨");
+                if (value.equals("1")){
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<ReviewItem> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
+
+
+
 
     //게시물 삭제
     private void deleteData(final String user, final String title) {

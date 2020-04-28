@@ -15,6 +15,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -106,10 +109,16 @@ public class BookReviewActivity extends AppCompatActivity {
         image =intent.getStringExtra("image");
         title = intent.getStringExtra("title");
 
+        //현재시간 가져오기 년 월 일 시간 분
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        String getTime = sdf.format(date);
+
 
         ReviewInterface apIInterface=ApiClient.getApiClient().create(ReviewInterface.class);
 
-        Call<ReviewItem> call =apIInterface.insert(title,image,author,user,isbn,star,content);
+        Call<ReviewItem> call =apIInterface.insert(title,image,author,user,isbn,star,content,getTime);
 
         call.enqueue(new Callback<ReviewItem>() {
             @Override

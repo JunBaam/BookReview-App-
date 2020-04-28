@@ -26,7 +26,6 @@ public class BookInfoActivity extends AppCompatActivity {
     private static final String TAG = "BookInfoActivity에서 값을받음 " ;
 
     //TODO: 2020-03-25  uri 링크도 고려해야됨. 하나더
-
     //제목,저자,가격,출판사,출판일,내용  6개
     private TextView tv_title ,tv_author, tv_price ,tv_publisher, tv_date , tv_content;
     //책 표지
@@ -34,8 +33,6 @@ public class BookInfoActivity extends AppCompatActivity {
     //리뷰등록버튼
     private Button btn_review;
     String link ,image,title, isbn,author;
-
-
 
     public BookInfoActivity() {
     }

@@ -46,7 +46,7 @@ public class ReplyActivity extends AppCompatActivity {
 
     PreferenceHelper preferenceHelper;
     SharedPreferences login_pref;
-    String REGIURL = "http://15.165.60.40/user/";
+
     ReplyApi replyApi;
     private final String BASEURL = "http://15.165.60.40/user/";
 

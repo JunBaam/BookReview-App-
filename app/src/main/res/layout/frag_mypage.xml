@@ -128,12 +128,12 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <Button
-        android:id="@+id/btn_mypageReply"
+        android:id="@+id/btn_mypage_ocr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_edge"
         android:gravity="left"
-        android:text="  내가 좋아요한 댓글"
+        android:text="  나만의 글귀"
         android:fontFamily="sans-serif-light"
         android:textSize="20dp"
         android:layout_marginTop="1dp"

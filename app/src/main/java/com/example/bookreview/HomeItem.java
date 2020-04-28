@@ -15,9 +15,13 @@ public class HomeItem {
     String star;
     int like_count;
     int reply_count;
+    String like;
 
-    public HomeItem(String title,String author,String image,String user,String star
+
+
+    public HomeItem(String title,String author,String image,String user,String star, String like
     ,int like_count,int reply_count){
+        this.like=like;
         this.title=title;
         this.author=author;
         this.image=image;
@@ -25,6 +29,14 @@ public class HomeItem {
         this.star=star;
         this.like_count=like_count;
         this.reply_count=reply_count;
+    }
+
+    public String getLike() {
+        return like;
+    }
+
+    public void setLike(String like) {
+        this.like = like;
     }
 
     public String getTitle() {

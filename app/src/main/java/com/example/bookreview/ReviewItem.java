@@ -33,8 +33,14 @@ public  class ReviewItem {
     @SerializedName("user")
     private String user;
 
+    //북마크 유무
     @SerializedName("love")
     private Boolean love;
+
+    //북마크 유무
+    @SerializedName("like")
+    private Boolean like;
+
 
     @SerializedName("id")
     private int id;
@@ -42,6 +48,17 @@ public  class ReviewItem {
     @SerializedName("user_image")
     private String user_image;
 
+    @SerializedName("date")
+    private String date;
+
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getUser_image() {
         return user_image;
@@ -64,6 +81,14 @@ public  class ReviewItem {
 
     public void setLove(Boolean love) {
         this.love = love;
+    }
+
+    public Boolean getLike() {
+        return like;
+    }
+
+    public void setLike(Boolean like) {
+        this.like = like;
     }
 
 

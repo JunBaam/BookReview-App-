@@ -15,7 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="리뷰수정"
-        android:textSize="23sp"
+        android:textColor="#FE7B05"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,12 +85,14 @@
         style="@style/Widget.AppCompat.RatingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:isIndicator="false"
         android:max="5"
         android:numStars="5"
         android:rating="0"
         android:stepSize="0.5"
+        android:progressTint="#FE7B05"
+
+        android:secondaryProgressTint="#FE7B05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_review"
         app:layout_constraintHorizontal_bias="0.228"

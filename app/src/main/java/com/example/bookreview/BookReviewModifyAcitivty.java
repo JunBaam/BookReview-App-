@@ -85,6 +85,12 @@ public class BookReviewModifyAcitivty extends AppCompatActivity {
                  UpdateReview(title,modify_content,modify_star);
                  Log.i(TAG, "보내느값: "+title+modify_content+modify_star);
 
+
+                 Intent intent = new Intent();
+                 intent.putExtra("content", content);
+                 intent.putExtra("star",star);
+
+                 setResult(RESULT_OK, intent);
                  finish();
              }
          });
@@ -93,8 +99,7 @@ public class BookReviewModifyAcitivty extends AppCompatActivity {
 
 
 
-
-    //게시물 삭제
+    //게시물 업데이트
     private void UpdateReview( final String title, String content,String star) {
 
         reviewInterface = ApiClient.getApiClient().create(ReviewInterface.class);

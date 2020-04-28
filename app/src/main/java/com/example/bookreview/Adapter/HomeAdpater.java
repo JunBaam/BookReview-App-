@@ -20,12 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.bookreview.BookSearchModel.Item;
 import com.example.bookreview.ReviewItem;
 import com.example.bookreview.R;
-import com.example.bookreview.ReviewItem;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder> {
@@ -65,12 +62,17 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         holder.tv_star.setText(reviewItemList.get(position).getStar());//후기점수
         holder.tv_user.setText(reviewItemList.get(position).getUser()+"님의 점수:"); //사용자
 
+
         isbn =reviewItemList.get(position).getIsbn();  //isbn 책고유번호.
+
+   Boolean like = reviewItemList.get(position).getLike();
+
+        Log.i(TAG, "onBindViewHolder: " + like);
 
 
         //현재 로그인된 아이디 @@@@@@@@@@@ context 정리해둘것
         sharedPreferences = context.getSharedPreferences("logininfo", Context.MODE_PRIVATE);
-        //쉐어드에서 가져오안 아이디  (현재로그인)
+        //쉐어드에서 가져온 아이디  (현재로그인)
          shared_user = sharedPreferences.getString("id","");
         //, 리뷰게시물에서 가져온아이디
         review_user = reviewItemList.get(position).getUser();
@@ -110,6 +112,9 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
                 .load(reviewItemList.get(position).getImage())
                 .into(holder.iv_image);
 
+
+
+        //북마크설정
         final Boolean love = reviewItemList.get(position).getLove();
 
         if (love){
@@ -117,6 +122,18 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         } else {
             holder.iv_home_love.setImageResource(R.drawable.s2);
         }
+
+
+
+        //북마크설정
+//        final Boolean like = reviewItemList.get(position).getLike();
+//
+//        if (like){
+//          holder.iv_home_like.setImageResource(R.drawable.good);
+//        } else {
+//           holder.iv_home_like.setImageResource(R.drawable.ngood);
+//        }
+
 
 
 
@@ -135,7 +152,7 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
     public class HomeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private RecyclerViewClickListener mListener;
-        private ImageView iv_image,iv_home_love ,iv_home_userImage ,iv_reply;//책커버 , 즐겨찾기
+        private ImageView iv_image,iv_home_love ,iv_home_userImage ,iv_reply ,iv_home_like;//책커버 , 즐겨찾기
         private TextView tv_title,tv_author,tv_user,
                 tv_content,tv_likeCount,tv_replyCount,tv_star ,tv_isbn;
 
@@ -156,6 +173,9 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
             tv_author=itemView.findViewById(R.id.tv_home_author); // 저자
             tv_user=itemView.findViewById(R.id.tv_homeUserId);     //게시글 사용자
             tv_content=itemView.findViewById(R.id.tv_homeContent); // 게시글 내용
+
+            iv_home_like=itemView.findViewById(R.id.iv_homeLike);
+
             tv_likeCount=itemView.findViewById(R.id.tv_likeCount);  //좋아요수
             tv_replyCount=itemView.findViewById(R.id.tv_replyCount);  //댓글수
             tv_isbn=itemView.findViewById(R.id.tv_isbn);             //isbn
@@ -176,11 +196,12 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
 
             //아이템클릭 리스너
             mListener = listener;
-            constraintLayout.setOnClickListener(this);
-            iv_home_love.setOnClickListener(this);
-            btn_modify.setOnClickListener(this);
-            btn_remove.setOnClickListener(this);
-            iv_reply.setOnClickListener(this);
+            constraintLayout.setOnClickListener(this); //레이아웃
+            iv_home_love.setOnClickListener(this);   //북마크
+            btn_modify.setOnClickListener(this);     //수정
+            btn_remove.setOnClickListener(this);    //삭제
+            iv_reply.setOnClickListener(this);      //댓글
+            iv_home_like.setOnClickListener(this);  //좋아요
 
 
         } //뷰홀더 객체
@@ -215,6 +236,12 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
                     Log.i(TAG, "onrReplyClick: "+getAdapterPosition()+"번눌림");
                     break;
 
+                case R.id.iv_homeLike:
+                    mListener.onLikeClick(iv_home_like,getAdapterPosition());
+                    Log.i(TAG, "onrLikeClick: "+getAdapterPosition()+"번눌림");
+                    break;
+
+
 
                 default:
                     break;
@@ -229,6 +256,7 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeAdpater.HomeViewHolder
         void onModifyClick(View view, int position);
         void onRemoveClick(View view, int position);
         void onReplyClick(View view, int position);
+        void onLikeClick(View view, int position);
 
     }
 

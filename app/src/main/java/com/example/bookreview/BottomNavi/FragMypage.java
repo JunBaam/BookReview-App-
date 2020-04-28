@@ -35,6 +35,8 @@ import com.example.bookreview.HomeItem;
 import com.example.bookreview.Login;
 import com.example.bookreview.LoginActivity;
 import com.example.bookreview.MainActivity;
+import com.example.bookreview.MyBookActivity;
+import com.example.bookreview.MyOcrActivity;
 import com.example.bookreview.MypageModifyActivity;
 import com.example.bookreview.R;
 import com.example.bookreview.ReviewItem;
@@ -62,8 +64,8 @@ public class FragMypage extends Fragment {
     SharedPreferences login_pref;
     Login login;
     private UserApi userApi;
-    TextView tv_mypageId ,tv_myBoard;
-    Button btn_profile_modify,btn_mypageBoard,btn_bookMark;
+    TextView tv_mypageId ,tv_mybook;
+    Button btn_profile_modify,btn_mypageBoard,btn_bookMark, btn_mypage_ocr;
     ImageView iv_profile;
     List<UserItem> userItems ;
     List<ReviewItem> reviewItemList;
@@ -98,8 +100,19 @@ public class FragMypage extends Fragment {
         //iv_profile.setImageBitmap(StringToBitmap(userImage));
         //쉐어드에 String 형태로 저장된 비트맵 이미지를 다시 비트맵으로 바꿈
         //Log.i(TAG, "기본유저아이디"+ StringToBitmap(userImage));
-        btn_mypageBoard = view.findViewById(R.id.btn_mypage_board); //내가등록한게시물버튼
+
         btn_bookMark=view.findViewById(R.id.btn_bookMark);   // 북마크목록
+
+        //나만의 글귀
+        btn_mypage_ocr=view.findViewById(R.id.btn_mypage_ocr);
+        btn_mypage_ocr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent =new Intent(getContext(), MyOcrActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //        getPosts2();  //서버 DB로부터 프로필이미지를 가져옴
 
@@ -112,11 +125,9 @@ public class FragMypage extends Fragment {
 
 
              //   Bundle bundle = new Bundle();
-
                 //bundle.putString("image", idx);
                // FragMypage fragMypage = new FragMypage();
                // fragMypage.setArguments(bundle);
-
                // getActivity().startActivity(new Intent(getActivity(), MypageModifyActivity.class));
 
 
@@ -128,6 +139,21 @@ public class FragMypage extends Fragment {
 
             }
         });
+
+
+       //나만의서재
+      btn_mypageBoard = view.findViewById(R.id.btn_mypage_board); //내가등록한게시물버튼
+        btn_mypageBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent =new Intent(getContext(), MyBookActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
         return  view;
     } //onCreateView

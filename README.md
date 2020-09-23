@@ -1,1 +1,2 @@
-독서후기를 관리할 수있는 어플입니다  Android/JAVA   저장소 : sharedPreference
+독서후기를 다른 사용자들과 공유 할수있는 어플입니다 /n
+Android/Jav

@@ -2,10 +2,10 @@
 
 사용 기술 
 Android/Java \
-Php  \
-Mysql \
-Apache \ 
-AWS \ 
-네이버검색 API \
+Php  
+Mysql 
+Apache 
+AWS 
+네이버검색 API 
 구글 비전  API 
 

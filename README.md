@@ -5,7 +5,7 @@ Android/Java \
 Php  \
 Mysql \
 Apache \ 
-AWS\ 
+AWS \ 
 네이버검색 API \
-구글 비전  API \
+구글 비전  API 
 
